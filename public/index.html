@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Galaxy Seeder (GL-12) - Official Platform</title>
+  <meta name="description" content="Galaxy Manual Seeder GL-12 agricultural equipment platform with instant recharge, equipment activation, daily income, and 24/7 withdrawals.">
+  <meta name="theme-color" content="#0a1615">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" href="/assets/images/galaxy_circle_logo.png">
+  <link rel="apple-touch-icon" href="/assets/images/galaxy_circle_logo.png">
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Mobile-first App Container Shell -->
+  <div id="app-container">
+
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="brand-wrapper">
+        <img src="/assets/images/galaxy_circle_logo.png" alt="Galaxy Seeder" class="brand-logo" onerror="this.src='/assets/images/ic_app_icon_1793273003189.jpg'">
+        <div class="brand-info">
+          <span class="brand-title">Galaxy Seeder GL-12</span>
+          <span class="brand-sub"><span class="live-dot"></span> 24/7 Dedicated Cloud Server</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn-pill btn-pill-outline" onclick="window.openModal('modal-service')">
+          🎧 Help
+        </button>
+        <button class="btn-pill btn-pill-primary" onclick="window.openRechargeModal()">
+          + Recharge
+        </button>
+      </div>
+    </header>
+
+    <!-- Marquee Notice Ticker -->
+    <div class="notice-ticker">
+      <span class="ticker-icon">📢</span>
+      <div class="ticker-marquee">
+        Daily income is credited automatically at 00:00 midnight • Starter ₹300 and ₹500 plans are live • Withdrawals supported 24/7 via Bank IMPS & UPI • Official Galaxy Seeder Agricultural Technology
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SCREEN 1: HOME SCREEN
+         ========================================== -->
+    <main id="screen-home" class="screen-view active">
+      <!-- Hero Banner -->
+      <div class="hero-banner-card">
+        <img src="/assets/images/galaxy_banner_top.jpg" alt="Galaxy Manual Seeder GL-12">
+        <div class="banner-badge">GL-12 Prime Series</div>
+      </div>
+
+      <!-- Quick Balance Strip -->
+      <div class="quick-balance-strip">
+        <div class="balance-item">
+          <span class="balance-label">Wallet Balance</span>
+          <span class="balance-val highlight wallet-balance-val">₹600.00</span>
+        </div>
+        <div class="balance-item" style="text-align: center;">
+          <span class="balance-label">Today Profit</span>
+          <span class="balance-val today-income-val">₹0.00</span>
+        </div>
+        <div class="balance-item" style="text-align: right;">
+          <span class="balance-label">Total Profit</span>
+          <span class="balance-val total-income-val">₹0.00</span>
+        </div>
+      </div>
+
+      <!-- 4 Quick Actions Grid -->
+      <div class="actions-grid">
+        <div class="action-tile tile-recharge" onclick="window.openRechargeModal()">
+          <div class="tile-icon">💳</div>
+          <span>Recharge</span>
+        </div>
+        <div class="action-tile tile-withdraw" onclick="window.openWithdrawModal()">
+          <div class="tile-icon">🏦</div>
+          <span>Withdraw</span>
+        </div>
+        <div class="action-tile tile-online" onclick="window.openModal('modal-service')">
+          <div class="tile-icon">🎧</div>
+          <span>Online</span>
+        </div>
+        <div class="action-tile tile-channel" onclick="window.openTelegramChannel()">
+          <div class="tile-icon">✈️</div>
+          <span>Channel</span>
+        </div>
+      </div>
+
+      <!-- Day Income vs VIP Income Tabs -->
+      <div class="category-tabs">
+        <button class="tab-btn active" data-cat="DAY_INCOME" onclick="window.switchCategory('DAY_INCOME')">
+          Day Income (Daily)
+        </button>
+        <button class="tab-btn" data-cat="VIP_INCOME" onclick="window.switchCategory('VIP_INCOME')">
+          VIP Income (High Yield)
+        </button>
+      </div>
+
+      <!-- Products Dynamic Container -->
+      <div id="products-container" class="products-list">
+        <!-- Rendered by app.js -->
+      </div>
+    </main>
+
+    <!-- ==========================================
+         SCREEN 2: DEVICES SCREEN
+         ========================================== -->
+    <main id="screen-devices" class="screen-view">
+      <div class="devices-overview-card">
+        <div class="overview-title">Agricultural Machinery Assets</div>
+        <div class="overview-row">
+          <div>
+            <div class="overview-stat-val" id="devices-active-count">0</div>
+            <div class="overview-stat-lbl">Active Seeders</div>
+          </div>
+          <div>
+            <div class="overview-stat-val" id="devices-daily-total" style="color: var(--primary);">₹0.00</div>
+            <div class="overview-stat-lbl">Daily Revenue</div>
+          </div>
+          <div>
+            <div class="overview-stat-val" id="devices-claimed-total" style="color: var(--accent-gold);">₹0.00</div>
+            <div class="overview-stat-lbl">Total Claimed</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px; color: #fff;">My Operating Seeders</h3>
+      <div id="my-devices-list">
+        <!-- Rendered by app.js -->
+      </div>
+    </main>
+
+    <!-- ==========================================
+         SCREEN 3: TEAM SCREEN
+         ========================================== -->
+    <main id="screen-team" class="screen-view">
+      <!-- Referral Code Card -->
+      <div class="team-code-card">
+        <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">My Official Invitation Code</span>
+        <div class="code-row">
+          <span class="code-text" id="team-code-val">c07cdf4c</span>
+          <button class="btn-copy" onclick="window.copyInviteCode()">Copy Code</button>
+        </div>
+      </div>
+
+      <!-- Commission Rate Overview -->
+      <div class="team-levels-grid">
+        <div class="level-card">
+          <div class="level-badge">Level 1</div>
+          <div class="level-rate">25%</div>
+          <div class="level-desc">Direct Referral</div>
+        </div>
+        <div class="level-card">
+          <div class="level-badge">Level 2</div>
+          <div class="level-rate">3%</div>
+          <div class="level-desc">Sub-tier Share</div>
+        </div>
+        <div class="level-card">
+          <div class="level-badge">Level 3</div>
+          <div class="level-rate">2%</div>
+          <div class="level-desc">Network Profit</div>
+        </div>
+      </div>
+
+      <!-- Team Stats Card -->
+      <div class="quick-balance-strip" style="margin-bottom: 16px;">
+        <div class="balance-item">
+          <span class="balance-label">Team Size</span>
+          <span class="balance-val" id="team-members-count">4</span>
+        </div>
+        <div class="balance-item" style="text-align: center;">
+          <span class="balance-label">Team Recharge</span>
+          <span class="balance-val highlight" id="team-recharge-total">₹1,600</span>
+        </div>
+        <div class="balance-item" style="text-align: right;">
+          <span class="balance-label">Total Commission</span>
+          <span class="balance-val highlight" id="team-commission-total">₹221</span>
+        </div>
+      </div>
+
+      <!-- Level Selector Tabs -->
+      <div class="category-tabs" style="margin-bottom: 14px;">
+        <button class="tab-btn active team-level-tab" onclick="window.switchTeamLevel(1)">Level 1 (25%)</button>
+        <button class="tab-btn team-level-tab" onclick="window.switchTeamLevel(2)">Level 2 (3%)</button>
+        <button class="tab-btn team-level-tab" onclick="window.switchTeamLevel(3)">Level 3 (2%)</button>
+      </div>
+
+      <!-- Member List -->
+      <div id="team-members-list">
+        <!-- Rendered by app.js -->
+      </div>
+    </main>
+
+    <!-- ==========================================
+         SCREEN 4: SHARE SCREEN
+         ========================================== -->
+    <main id="screen-share" class="screen-view">
+      <div class="share-hero-card">
+        <h2 style="font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px;">Invite & Earn Daily</h2>
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">
+          Share Galaxy Seeder with friends & farmers. Get up to 30% instant referral commission!
+        </p>
+
+        <!-- QR Code -->
+        <div class="qr-preview">
+          <img id="share-qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Ffastidious-pithivier-54c050.netlify.app%2F%3Fref%3Dc07cdf4c" alt="Share QR Code">
+        </div>
+
+        <div class="code-row" style="margin-bottom: 16px;">
+          <span class="code-text">Code: c07cdf4c</span>
+          <button class="btn-copy" onclick="window.copyInviteCode()">Copy</button>
+        </div>
+
+        <div class="share-buttons-grid">
+          <button class="btn-whatsapp" onclick="window.shareWhatsApp()">
+            <span>💬 WhatsApp</span>
+          </button>
+          <button class="btn-telegram" onclick="window.shareTelegram()">
+            <span>✈️ Telegram</span>
+          </button>
+        </div>
+
+        <button class="btn-pill btn-pill-outline" style="width: 100%; margin-top: 12px; padding: 10px; justify-content: center;" onclick="window.copyShareLink()">
+          📋 Copy Direct Invitation Link
+        </button>
+      </div>
+    </main>
+
+    <!-- ==========================================
+         SCREEN 5: MY PROFILE SCREEN
+         ========================================== -->
+    <main id="screen-profile" class="screen-view">
+      <!-- Profile Header -->
+      <div class="profile-card">
+        <img src="/assets/images/galaxy_circle_logo.png" alt="Avatar" class="profile-avatar">
+        <div>
+          <div class="profile-name" id="profile-phone">+91 98765 43210</div>
+          <div class="profile-tag">🌟 VIP Member</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+            Invite Code: <span id="profile-invite-code" style="color: var(--primary); font-weight: 600;">c07cdf4c</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Balances Strip -->
+      <div class="quick-balance-strip">
+        <div class="balance-item">
+          <span class="balance-label">Wallet Balance</span>
+          <span class="balance-val highlight wallet-balance-val">₹600.00</span>
+        </div>
+        <div class="balance-item" style="text-align: right;">
+          <button class="btn-pill btn-pill-primary" onclick="window.openWithdrawModal()">Withdraw</button>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
+        <div class="stat-box" style="background: var(--bg-card);">
+          <span class="stat-box-val" id="profile-total-recharged" style="color: #38bdf8;">₹600.00</span>
+          <span class="stat-box-label">Total Recharged</span>
+        </div>
+        <div class="stat-box" style="background: var(--bg-card);">
+          <span class="stat-box-val" id="profile-total-withdrawn" style="color: #4ade80;">₹0.00</span>
+          <span class="stat-box-label">Total Withdrawn</span>
+        </div>
+      </div>
+
+      <!-- Profile Menu Actions -->
+      <div class="menu-list">
+        <div class="menu-item" onclick="window.openModal('modal-bind-bank')">
+          <div class="menu-left">
+            <div class="menu-icon">🏦</div>
+            <span class="menu-title">Bind Bank Account / UPI</span>
+          </div>
+          <span class="menu-arrow">›</span>
+        </div>
+        <div class="menu-item" onclick="window.openModal('modal-change-wpass')">
+          <div class="menu-left">
+            <div class="menu-icon">🔒</div>
+            <span class="menu-title">Change Withdrawal Password</span>
+          </div>
+          <span class="menu-arrow">›</span>
+        </div>
+        <div class="menu-item" onclick="window.openModal('modal-video-tutorial')">
+          <div class="menu-left">
+            <div class="menu-icon">📺</div>
+            <span class="menu-title">Official Withdrawal Video Guide</span>
+          </div>
+          <span class="menu-arrow">›</span>
+        </div>
+        <div class="menu-item" onclick="window.openModal('modal-service')">
+          <div class="menu-left">
+            <div class="menu-icon">🎧</div>
+            <span class="menu-title">24/7 Dedicated Customer Service</span>
+          </div>
+          <span class="menu-arrow">›</span>
+        </div>
+        <div class="menu-item" onclick="window.showToast('App is operating as Progressive Web App (PWA). Add to Home Screen via browser menu.', 'info')">
+          <div class="menu-left">
+            <div class="menu-icon">📲</div>
+            <span class="menu-title">Download Official Android App (APK)</span>
+          </div>
+          <span class="menu-arrow">›</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- ==========================================
+         BOTTOM NAVIGATION BAR (5 TABS)
+         ========================================== -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-screen="screen-home" onclick="window.switchTab('screen-home')">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Home</span>
+      </button>
+      <button class="nav-item" data-screen="screen-devices" onclick="window.switchTab('screen-devices')">
+        <span class="nav-icon">🚜</span>
+        <span class="nav-label">Devices</span>
+      </button>
+      <button class="nav-item" data-screen="screen-team" onclick="window.switchTab('screen-team')">
+        <span class="nav-icon">👥</span>
+        <span class="nav-label">Team</span>
+      </button>
+      <button class="nav-item" data-screen="screen-share" onclick="window.switchTab('screen-share')">
+        <span class="nav-icon">🔗</span>
+        <span class="nav-label">Share</span>
+      </button>
+      <button class="nav-item" data-screen="screen-profile" onclick="window.switchTab('screen-profile')">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">My</span>
+      </button>
+    </nav>
+
+  </div><!-- /#app-container -->
+
+  <!-- ==========================================
+       MODAL 1: RECHARGE MODAL
+       ========================================== -->
+  <div id="modal-recharge" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <span class="modal-title">Recharge Wallet</span>
+        <button class="btn-close-modal" onclick="window.closeModal('modal-recharge')">✕</button>
+      </div>
+
+      <!-- Fast Presets -->
+      <span class="form-label">Select Recharge Amount (₹)</span>
+      <div class="preset-amounts-grid">
+        <button class="btn-preset selected" onclick="window.selectRechargePreset(300)">₹300</button>
+        <button class="btn-preset" onclick="window.selectRechargePreset(500)">₹500</button>
+        <button class="btn-preset" onclick="window.selectRechargePreset(1000)">₹1,000</button>
+        <button class="btn-preset" onclick="window.selectRechargePreset(3000)">₹3,000</button>
+        <button class="btn-preset" onclick="window.selectRechargePreset(5000)">₹5,000</button>
+        <button class="btn-preset" onclick="window.selectRechargePreset(10000)">₹10,000</button>
+        <button class="btn-preset" onclick="window.selectRechargePreset(50000)">₹50,000</button>
+        <button class="btn-preset" onclick="window.selectRechargePreset(100000)">₹1,00,000</button>
+      </div>
+
+      <!-- Custom Amount Input -->
+      <div class="form-group">
+        <label class="form-label" for="recharge-amount-input">Custom Amount (₹)</label>
+        <input type="number" id="recharge-amount-input" class="form-input" value="300" min="100" max="100000">
+      </div>
+
+      <!-- UPI Payment Details Card -->
+      <div class="upi-pay-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:12px;font-weight:700;color:var(--primary);">Official Merchant UPI (Pay via PhonePe/GPay)</span>
+          <span style="font-size:10px;background:rgba(34,197,94,0.15);color:#4ade80;padding:2px 6px;border-radius:6px;">VERIFIED</span>
+        </div>
+        <div class="upi-row">
+          <span class="upi-id-text" id="merchant-upi-text">jayray8257@nyes</span>
+          <button class="btn-copy" onclick="window.copyAssignedUpi()">Copy UPI</button>
+        </div>
+        
+        <!-- QR Code -->
+        <div style="text-align:center;margin-top:14px;">
+          <img id="recharge-qr-img" src="" alt="UPI QR" style="width:140px;height:140px;border-radius:10px;background:#fff;padding:6px;">
+          <p style="font-size:11px;color:var(--text-muted);margin-top:6px;">Scan to pay directly from any UPI App</p>
+        </div>
+      </div>
+
+      <!-- 12 Digit UTR Input -->
+      <div class="form-group">
+        <label class="form-label" for="recharge-utr-input">Enter 12-Digit UTR / Transaction Ref No.</label>
+        <input type="text" id="recharge-utr-input" class="form-input" placeholder="e.g. 431298765421" maxlength="12">
+        <span style="font-size:10.5px;color:var(--text-muted);margin-top:4px;display:block;">
+          Copy the 12-digit UTR from your PhonePe/GPay receipt and paste here for automatic instant verification.
+        </span>
+      </div>
+
+      <button class="btn-buy" onclick="window.submitUtrRecharge()" style="margin-bottom:12px;">
+        ⚡ Submit UTR & Verify (Instant Credit)
+      </button>
+
+      <!-- Instant Sandbox Test Credit Button -->
+      <div style="background:rgba(0,229,190,0.08);border:1px dashed var(--border-glow);border-radius:12px;padding:12px;text-align:center;margin-bottom:18px;">
+        <span style="font-size:11px;color:var(--primary);font-weight:600;display:block;margin-bottom:6px;">
+          ⚡ Testing Mode / Trial Sandbox Credit
+        </span>
+        <div style="display:flex;gap:8px;justify-content:center;">
+          <button class="btn-pill btn-pill-outline" onclick="window.instantDemoCredit(300)">+₹300 Demo Credit</button>
+          <button class="btn-pill btn-pill-outline" onclick="window.instantDemoCredit(500)">+₹500 Demo Credit</button>
+        </div>
+      </div>
+
+      <!-- Recharge History -->
+      <h4 style="font-size:13px;color:#fff;margin-bottom:8px;">Recent Recharge History</h4>
+      <div id="recharge-history-list"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 2: WITHDRAW MODAL
+       ========================================== -->
+  <div id="modal-withdraw" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <span class="modal-title">Withdraw Funds</span>
+        <button class="btn-close-modal" onclick="window.closeModal('modal-withdraw')">✕</button>
+      </div>
+
+      <div class="quick-balance-strip" style="margin-bottom:14px;">
+        <div class="balance-item">
+          <span class="balance-label">Available to Withdraw</span>
+          <span class="balance-val highlight wallet-balance-val">₹600.00</span>
+        </div>
+        <div class="balance-item" style="text-align:right;">
+          <span class="balance-label">Minimum</span>
+          <span class="balance-val" style="font-size:15px;color:#fff;">₹200</span>
+        </div>
+      </div>
+
+      <!-- Payout Method -->
+      <span class="form-label">Payout Method</span>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;">
+        <label style="background:#091a18;padding:10px;border-radius:8px;border:1px solid var(--border-subtle);display:flex;align-items:center;gap:8px;font-size:12.5px;cursor:pointer;">
+          <input type="radio" name="withdraw_method" value="bank" checked>
+          <span>Bank Account</span>
+        </label>
+        <label style="background:#091a18;padding:10px;border-radius:8px;border:1px solid var(--border-subtle);display:flex;align-items:center;gap:8px;font-size:12.5px;cursor:pointer;">
+          <input type="radio" name="withdraw_method" value="upi">
+          <span>UPI ID</span>
+        </label>
+      </div>
+
+      <!-- Withdrawal Amount Input -->
+      <div class="form-group">
+        <label class="form-label" for="withdraw-amount-input">Withdraw Amount (₹)</label>
+        <input type="number" id="withdraw-amount-input" class="form-input" placeholder="Min. ₹200" min="200">
+        <div style="display:flex;gap:6px;margin-top:6px;">
+          <button class="btn-pill btn-pill-outline" onclick="window.setWithdrawAmount(250)">₹250</button>
+          <button class="btn-pill btn-pill-outline" onclick="window.setWithdrawAmount(500)">₹500</button>
+          <button class="btn-pill btn-pill-outline" onclick="window.setWithdrawAmount(1000)">₹1,000</button>
+          <button class="btn-pill btn-pill-outline" onclick="window.setWithdrawAmount('ALL')">All Balance</button>
+        </div>
+      </div>
+
+      <!-- Fee and Net preview -->
+      <div style="background:#091a18;padding:10px 14px;border-radius:8px;margin-bottom:14px;border:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;font-size:12px;">
+        <div>
+          <span style="color:var(--text-muted);">Processing Fee: </span>
+          <span id="withdraw-fee-text" style="color:#f87171;font-weight:600;">₹0.00 (5%)</span>
+        </div>
+        <div>
+          <span style="color:var(--text-muted);">Net Arriving: </span>
+          <span id="withdraw-net-text" style="color:var(--primary);font-weight:700;">₹0.00</span>
+        </div>
+      </div>
+
+      <!-- Withdrawal Password -->
+      <div class="form-group">
+        <label class="form-label" for="withdraw-pass-input">Withdrawal Password (Default: 123456)</label>
+        <input type="password" id="withdraw-pass-input" class="form-input" placeholder="Enter 6-digit withdrawal password">
+      </div>
+
+      <button class="btn-buy" onclick="window.submitWithdrawal()" style="margin-bottom:18px;">
+        🚀 Confirm & Submit Withdrawal
+      </button>
+
+      <!-- Withdrawal History -->
+      <h4 style="font-size:13px;color:#fff;margin-bottom:8px;">Recent Withdrawal Records</h4>
+      <div id="withdrawal-history-list"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 3: BIND BANK / UPI MODAL
+       ========================================== -->
+  <div id="modal-bind-bank" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <span class="modal-title">Bind Bank Account & UPI</span>
+        <button class="btn-close-modal" onclick="window.closeModal('modal-bind-bank')">✕</button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="input-bank-name">Bank Name</label>
+        <input type="text" id="input-bank-name" class="form-input" value="State Bank of India">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="input-bank-ac">Account Number</label>
+        <input type="text" id="input-bank-ac" class="form-input" value="392019482910">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="input-bank-ifsc">IFSC Code</label>
+        <input type="text" id="input-bank-ifsc" class="form-input" value="SBIN0001234">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="input-bank-holder">Account Holder Name</label>
+        <input type="text" id="input-bank-holder" class="form-input" value="Galaxy Equipment Partner">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="input-bank-upi">UPI ID (e.g. name@okhdfcbank)</label>
+        <input type="text" id="input-bank-upi" class="form-input" value="partner@upi">
+      </div>
+
+      <button class="btn-buy" onclick="window.saveBankDetails()">Save Details</button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 4: CHANGE WITHDRAWAL PASSWORD
+       ========================================== -->
+  <div id="modal-change-wpass" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <span class="modal-title">Change Withdrawal Password</span>
+        <button class="btn-close-modal" onclick="window.closeModal('modal-change-wpass')">✕</button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="input-old-wpass">Current Password (Default: 123456)</label>
+        <input type="password" id="input-old-wpass" class="form-input" placeholder="Current password">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="input-new-wpass">New Password (At least 6 characters)</label>
+        <input type="password" id="input-new-wpass" class="form-input" placeholder="New password">
+      </div>
+
+      <button class="btn-buy" onclick="window.saveWithdrawPassword()">Update Password</button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 5: OFFICIAL TUTORIAL VIDEO & PROOF
+       ========================================== -->
+  <div id="modal-video-tutorial" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <span class="modal-title">Withdrawal Guide & Payment Proof</span>
+        <button class="btn-close-modal" onclick="window.closeModal('modal-video-tutorial')">✕</button>
+      </div>
+
+      <div style="background:#000;border-radius:12px;overflow:hidden;margin-bottom:14px;position:relative;height:190px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border-glow);">
+        <img src="/assets/images/dasani_home_screenshot.jpg" alt="Video cover" style="width:100%;height:100%;object-fit:cover;opacity:0.4;">
+        <div style="position:absolute;display:flex;flex-direction:column;align-items:center;gap:8px;">
+          <div style="width:52px;height:52px;border-radius:50%;background:var(--primary);color:var(--text-dark);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 20px var(--primary-glow);cursor:pointer;" onclick="window.showToast('Tutorial video playing in HD...', 'success')">
+            ▶
+          </div>
+          <span style="font-size:12px;font-weight:600;color:#fff;">Watch Instant Proof (02:45)</span>
+        </div>
+      </div>
+
+      <div style="font-size:12.5px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;">
+        <p>1. Ensure your bank card details or UPI ID are correctly registered under My Account.</p>
+        <p>2. Withdrawals submitted between 08:00 AM and 22:00 PM are credited instantly within 10 to 30 minutes via automated IMPS gateway.</p>
+        <p>3. 5% government tax and processing fee is automatically deducted per transaction.</p>
+      </div>
+
+      <button class="btn-pill btn-pill-primary" style="width:100%;padding:10px;justify-content:center;" onclick="window.closeModal('modal-video-tutorial')">
+        Understood
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 6: 24/7 DEDICATED CUSTOMER SERVICE CHAT
+       ========================================== -->
+  <div id="modal-service" class="modal-overlay">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span class="live-dot"></span>
+          <span class="modal-title">Galaxy Seeder 24/7 Support</span>
+        </div>
+        <button class="btn-close-modal" onclick="window.closeModal('modal-service')">✕</button>
+      </div>
+
+      <!-- Chat Window -->
+      <div id="support-chat-window" class="chat-window">
+        <div class="chat-bubble bot">
+          Namaste! 🙏 Welcome to Galaxy Manual Seeder 24/7 Official Support. How can we help you with Recharge, Equipment activation, or Bank Withdrawals?
+        </div>
+      </div>
+
+      <!-- Quick Action Chips -->
+      <div style="display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:8px;">
+        <button class="btn-pill btn-pill-outline" onclick="document.getElementById('chat-input-field').value='How to recharge?';window.sendChatMessage();">Recharge Help</button>
+        <button class="btn-pill btn-pill-outline" onclick="document.getElementById('chat-input-field').value='How to withdraw?';window.sendChatMessage();">Withdraw Help</button>
+        <button class="btn-pill btn-pill-outline" onclick="document.getElementById('chat-input-field').value='Plan details ₹300 and ₹500';window.sendChatMessage();">Plan Details</button>
+      </div>
+
+      <!-- Chat Input Row -->
+      <div class="chat-input-row">
+        <input type="text" id="chat-input-field" class="form-input" placeholder="Type your message..." onkeydown="if(event.key==='Enter')window.sendChatMessage()">
+        <button class="btn-pill btn-pill-primary" onclick="window.sendChatMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
