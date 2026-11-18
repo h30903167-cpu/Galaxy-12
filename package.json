@@ -1,0 +1,14 @@
+{
+  "name": "galaxy-seeder",
+  "version": "1.0.0",
+  "description": "Galaxy Manual Seeder GL-12 agricultural equipment web platform",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/build.js",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.14"
+  }
+}

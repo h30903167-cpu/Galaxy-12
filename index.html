@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galaxy Seeder GL-12 | Agricultural Equipment Platform</title>
+  <meta name="description" content="Galaxy Manual Seeder GL-12 agricultural equipment platform with secure recharge up to 1 Lakh, equipment activation, daily income, withdrawals with video proof, and 24/7 dedicated service.">
+  <link rel="icon" type="image/png" href="/assets/images/galaxy_circle_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-hover: #059669;
+      --primary-dark: #064e3b;
+      --primary-light: #ecfdf5;
+      --accent: #f59e0b;
+      --accent-light: #fef3c7;
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-card: #243248;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --radius: 12px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Notice Bar */
+    .status-bar {
+      background: linear-gradient(90deg, #065f46, #047857);
+      color: #ecfdf5;
+      font-size: 0.85rem;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .status-badge {
+      background: #10b981;
+      color: #064e3b;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+
+    /* Header */
+    header {
+      background-color: rgba(30, 41, 59, 0.95);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.875rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      object-fit: cover;
+      border: 2px solid var(--primary);
+    }
+    .brand-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .nav-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      padding: 0.5rem 0.875rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .nav-btn:hover {
+      color: var(--text);
+      background: var(--surface-card);
+    }
+    .nav-btn.active {
+      color: #fff;
+      background: var(--primary);
+      font-weight: 600;
+    }
+
+    .wallet-chip {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.35rem 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #fbbf24;
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 4rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      box-shadow: var(--shadow);
+    }
+    .hero-banner-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      opacity: 0.65;
+      display: block;
+    }
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.65) 60%, rgba(15, 23, 42, 0.2) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+      max-width: 650px;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      width: fit-content;
+    }
+    .hero-title {
+      font-size: 2rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn-secondary:hover {
+      background: var(--border);
+    }
+
+    /* Live Stats Bar */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .stat-val {
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+    .stat-lbl {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Section Headers */
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, border-color 0.2s;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      border-color: #475569;
+    }
+    .product-card.locked {
+      opacity: 0.82;
+      border-style: dashed;
+    }
+    .product-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      background: #000;
+      overflow: hidden;
+    }
+    .product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .product-card:hover .product-img {
+      transform: scale(1.04);
+    }
+    .card-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .badge-live {
+      background: #10b981;
+      color: #064e3b;
+    }
+    .badge-locked {
+      background: rgba(239, 68, 68, 0.9);
+      color: #fff;
+    }
+
+    .product-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .product-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .product-desc {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      min-height: 2.5rem;
+    }
+    .product-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      background: var(--surface-card);
+      padding: 0.85rem;
+      border-radius: 8px;
+      margin-bottom: 1.25rem;
+    }
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .spec-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .spec-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+    .spec-value.profit {
+      color: #34d399;
+    }
+    .product-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .price-tag {
+      display: flex;
+      flex-direction: column;
+    }
+    .price-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+    .price-amt {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    /* Modal / Popup */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 1rem;
+    }
+    .modal-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 500px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    /* Tabs Content Display */
+    .tab-section {
+      display: none;
+    }
+    .tab-section.active {
+      display: block;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Forms */
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .amount-chip {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .amount-chip.active, .amount-chip:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    /* Diagnostic Card */
+    .diagnostic-panel {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+      border: 1px solid #10b981;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+    .diagnostic-panel h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #10b981;
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+    }
+    .diagnostic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      font-size: 0.85rem;
+    }
+    .diag-item {
+      background: var(--surface-card);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .diag-label {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .diag-val {
+      font-weight: 700;
+      color: #38bdf8;
+      margin-top: 0.2rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      padding: 2rem 1.25rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .nav-links {
+        overflow-x: auto;
+        width: 100%;
+        padding-bottom: 0.25rem;
+      }
+      .hero-content {
+        padding: 1.25rem;
+      }
+      .hero-title {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Status Bar confirming Netlify Deployment Health -->
+  <div class="status-bar">
+    <span class="status-badge">NETLIFY READY</span>
+    <span>Galaxy Seeder GL-12 Platform &bull; Output: <strong>dist/</strong> &bull; SPA Routing: <strong>Active</strong></span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header>
+    <div class="header-container">
+      <a href="#home" class="brand" onclick="switchTab('home')">
+        <img src="/assets/images/galaxy_circle_logo.png" alt="Galaxy Seeder Logo" onerror="this.src='/assets/images/galaxy_seeder_logo.jpg'">
+        <div class="brand-title">
+          <span>GALAXY SEEDER</span>
+          <span class="brand-sub">GL-12 AGRI PLATFORM</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <button class="nav-btn active" id="tabBtn-home" onclick="switchTab('home')">🌾 Home</button>
+        <button class="nav-btn" id="tabBtn-seeders" onclick="switchTab('seeders')">⚙️ Seeders</button>
+        <button class="nav-btn" id="tabBtn-recharge" onclick="switchTab('recharge')">💳 Recharge</button>
+        <button class="nav-btn" id="tabBtn-withdraw" onclick="switchTab('withdraw')">💸 Withdraw</button>
+        <button class="nav-btn" id="tabBtn-team" onclick="switchTab('team')">👥 Team</button>
+        <button class="nav-btn" id="tabBtn-support" onclick="switchTab('support')">💬 Support</button>
+      </nav>
+
+      <div class="wallet-chip">
+        <span>💰 Balance:</span>
+        <span id="walletBalanceDisplay">₹1,250.00</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- TAB 1: HOME -->
+    <div id="tab-home" class="tab-section active">
+      <div class="hero">
+        <img src="/assets/images/galaxy_banner_top.jpg" alt="Galaxy Seeder Banner" class="hero-banner-img" onerror="this.src='/assets/images/banner_dasani_top.jpg'">
+        <div class="hero-content">
+          <span class="hero-tag">Official Agri Platform</span>
+          <h1 class="hero-title">Galaxy Manual Seeder GL-12</h1>
+          <p class="hero-desc">High-efficiency agricultural seeder machinery. Activate verified equipment, earn daily equipment yields, and withdraw with instant verification.</p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="switchTab('seeders')">🚀 View Live Seeders</button>
+            <button class="btn-secondary" onclick="claimDailyIncome()">⚡ Claim Daily Income</button>
+            <button class="btn-secondary" onclick="openApkModal()">📱 Android APK</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">🌱</div>
+          <div>
+            <div class="stat-val">GL-12 Pro</div>
+            <div class="stat-lbl">Featured Seeder Rig</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💰</div>
+          <div>
+            <div class="stat-val" id="todayIncomeStat">₹125.00</div>
+            <div class="stat-lbl">Today's Accumulated Yield</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🤝</div>
+          <div>
+            <div class="stat-val">14,280+</div>
+            <div class="stat-lbl">Active Agricultural Partners</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⚡</div>
+          <div>
+            <div class="stat-val">10-30 min</div>
+            <div class="stat-lbl">Instant Payout Window</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Featured Models -->
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Live Seeder Investment Plans</h2>
+          <p class="section-desc">Active machines available for immediate deployment and daily rental dividend</p>
+        </div>
+        <button class="btn-secondary" onclick="switchTab('seeders')">View All (7) &rarr;</button>
+      </div>
+
+      <div class="product-grid" id="featuredGrid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+
+    <!-- TAB 2: SEEDERS / MACHINES -->
+    <div id="tab-seeders" class="tab-section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">All Galaxy Seeder Equipment</h2>
+          <p class="section-desc">Choose starter machines or browse industrial agricultural machinery.</p>
+        </div>
+      </div>
+      <div class="product-grid" id="allProductsGrid">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+
+    <!-- TAB 3: RECHARGE -->
+    <div id="tab-recharge" class="tab-section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Wallet Recharge</h2>
+          <p class="section-desc">Recharge from ₹300 up to ₹1,00,000 via UPI QR or Instant Bank Transfer.</p>
+        </div>
+      </div>
+
+      <div style="max-width: 600px; margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
+        <div class="form-group">
+          <label class="form-label">Select Recharge Amount</label>
+          <div class="chips-row">
+            <button type="button" class="amount-chip active" onclick="setRechargeAmt(300)">₹300</button>
+            <button type="button" class="amount-chip" onclick="setRechargeAmt(500)">₹500</button>
+            <button type="button" class="amount-chip" onclick="setRechargeAmt(1000)">₹1,000</button>
+            <button type="button" class="amount-chip" onclick="setRechargeAmt(5000)">₹5,000</button>
+            <button type="button" class="amount-chip" onclick="setRechargeAmt(10000)">₹10,000</button>
+            <button type="button" class="amount-chip" onclick="setRechargeAmt(50000)">₹50,000</button>
+            <button type="button" class="amount-chip" onclick="setRechargeAmt(100000)">₹1,00,000</button>
+          </div>
+          <input type="number" id="rechargeInput" class="form-input" style="margin-top: 0.75rem;" value="300" min="100">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Payment Channel</label>
+          <select id="rechargeChannel" class="form-input">
+            <option value="UPI_FAST">⚡ UPI Fast QR (PhonePe / Google Pay / Paytm)</option>
+            <option value="IMPS">🏦 Direct IMPS Bank Transfer</option>
+            <option value="GATEWAY">🛡️ Secure Payment Gateway</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">UTR / Transaction Reference (12 digits)</label>
+          <input type="text" id="rechargeUtr" class="form-input" placeholder="e.g. 432198765432" maxlength="12">
+        </div>
+
+        <button class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;" onclick="processRecharge()">
+          Submit & Verify Recharge
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 4: WITHDRAW -->
+    <div id="tab-withdraw" class="tab-section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Income Withdrawal</h2>
+          <p class="section-desc">Withdraw your daily earnings directly to your verified bank account or UPI ID.</p>
+        </div>
+      </div>
+
+      <div style="max-width: 600px; margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
+        <div style="background: var(--surface-card); padding: 1rem; border-radius: 8px; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+          <span>Withdrawable Balance:</span>
+          <strong id="withdrawableBalanceDisplay" style="color: #10b981; font-size: 1.2rem;">₹1,250.00</strong>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Bank Account Number</label>
+          <input type="text" id="bankAcc" class="form-input" value="392019482910">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Account Holder Name</label>
+          <input type="text" id="holderName" class="form-input" value="Galaxy Equipment Partner">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">IFSC Code</label>
+          <input type="text" id="bankIfsc" class="form-input" value="SBIN0001234">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Withdrawal Amount (Min ₹150)</label>
+          <input type="number" id="withdrawAmt" class="form-input" value="500" min="150" oninput="calculateFee()">
+          <small style="color: var(--text-muted); display: block; margin-top: 0.25rem;">
+            Service & Tax Fee: <span id="feeDisplay">₹25.00</span> (5%) &bull; Actual Credit: <strong id="netCreditDisplay" style="color: #38bdf8;">₹475.00</strong>
+          </small>
+        </div>
+
+        <button class="btn-primary" style="width: 100%; justify-content: center; padding: 0.85rem;" onclick="processWithdrawal()">
+          Submit Withdrawal Request
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 5: TEAM & REFERRALS -->
+    <div id="tab-team" class="tab-section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Team & Referral Program</h2>
+          <p class="section-desc">Share your Galaxy Seeder invite code and earn multi-tier equipment commissions.</p>
+        </div>
+      </div>
+
+      <div style="max-width: 600px; margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <div style="font-size: 0.85rem; color: var(--text-muted);">YOUR INVITATION CODE</div>
+          <div style="font-size: 2rem; font-weight: 800; letter-spacing: 2px; color: #34d399; margin: 0.5rem 0;" id="inviteCodeDisplay">c07cdf4c</div>
+          <button class="btn-secondary" onclick="copyInviteLink()">📋 Copy Referral Link</button>
+        </div>
+
+        <div class="stats-grid" style="grid-template-columns: 1fr 1fr 1fr; margin-bottom: 1.5rem;">
+          <div style="background: var(--surface-card); padding: 0.75rem; border-radius: 8px; text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Tier 1 (10%)</div>
+            <div style="font-size: 1.1rem; font-weight: 700; color: #fff;">18 Members</div>
+          </div>
+          <div style="background: var(--surface-card); padding: 0.75rem; border-radius: 8px; text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Tier 2 (5%)</div>
+            <div style="font-size: 1.1rem; font-weight: 700; color: #fff;">42 Members</div>
+          </div>
+          <div style="background: var(--surface-card); padding: 0.75rem; border-radius: 8px; text-align: center;">
+            <div style="font-size: 0.75rem; color: var(--text-muted);">Tier 3 (2%)</div>
+            <div style="font-size: 1.1rem; font-weight: 700; color: #fff;">96 Members</div>
+          </div>
+        </div>
+
+        <div style="background: var(--surface-card); padding: 1rem; border-radius: 8px;">
+          <h4 style="margin-bottom: 0.5rem; color: #fff;">Commission Earnings</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Total referral commission accumulated: <strong style="color: #10b981;">₹6,840.00</strong>. Commission is credited to wallet immediately after member equipment activation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: SUPPORT -->
+    <div id="tab-support" class="tab-section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">24/7 Dedicated Support</h2>
+          <p class="section-desc">Our agricultural customer support team is available around the clock.</p>
+        </div>
+      </div>
+
+      <div style="max-width: 600px; margin: 0 auto; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem;">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div style="background: var(--surface-card); padding: 1rem; border-radius: 8px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <strong>WhatsApp Customer Desk</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Instant responses for recharge & withdrawal</div>
+            </div>
+            <a href="https://wa.me/?text=Hello%20Galaxy%20Seeder%20Support" target="_blank" class="btn-primary" style="background: #25D366;">WhatsApp</a>
+          </div>
+
+          <div style="background: var(--surface-card); padding: 1rem; border-radius: 8px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <strong>Telegram Official Channel</strong>
+              <div style="font-size: 0.8rem; color: var(--text-muted);">Daily withdrawal proofs, gift codes & notices</div>
+            </div>
+            <a href="https://t.me" target="_blank" class="btn-primary" style="background: #0088cc;">Telegram</a>
+          </div>
+
+          <div style="background: var(--surface-card); padding: 1rem; border-radius: 8px;">
+            <strong style="display: block; margin-bottom: 0.5rem;">Frequently Asked Questions</strong>
+            <details style="margin-bottom: 0.5rem; font-size: 0.85rem; cursor: pointer;">
+              <summary style="font-weight: 600; color: #38bdf8;">When is daily income credited?</summary>
+              <p style="color: var(--text-muted); margin-top: 0.25rem;">Daily income is credited every 24 hours starting from equipment activation. You can claim it directly to your wallet.</p>
+            </details>
+            <details style="margin-bottom: 0.5rem; font-size: 0.85rem; cursor: pointer;">
+              <summary style="font-weight: 600; color: #38bdf8;">What is the minimum withdrawal amount?</summary>
+              <p style="color: var(--text-muted); margin-top: 0.25rem;">The minimum withdrawal is ₹150 with a 5% processing fee. Funds typically credit in 10-30 minutes.</p>
+            </details>
+            <details style="font-size: 0.85rem; cursor: pointer;">
+              <summary style="font-weight: 600; color: #38bdf8;">Why are some machine plans locked?</summary>
+              <p style="color: var(--text-muted); margin-top: 0.25rem;">To maintain equipment inventory stability, only verified active batches (₹300 and ₹500 plans) are open for purchase.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Netlify Configuration & 404 Prevention Diagnostics -->
+    <div class="diagnostic-panel">
+      <h3>
+        <span>🛡️</span> Netlify Deployment & Routing Diagnostics
+      </h3>
+      <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
+        This deployment fixes the common <strong>"Page Not Found" (404)</strong> error on Netlify by providing a verified build pipeline, correct output publishing, and SPA fallback routing.
+      </p>
+      <div class="diagnostic-grid">
+        <div class="diag-item">
+          <div class="diag-label">Framework / Tool</div>
+          <div class="diag-val">Vite / Static HTML</div>
+        </div>
+        <div class="diag-item">
+          <div class="diag-label">Build Command</div>
+          <div class="diag-val">npm run build</div>
+        </div>
+        <div class="diag-item">
+          <div class="diag-label">Publish Directory</div>
+          <div class="diag-val">dist/</div>
+        </div>
+        <div class="diag-item">
+          <div class="diag-label">SPA Redirects Rule</div>
+          <div class="diag-val">/* &rarr; /index.html 200</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal for Action Confirmation -->
+  <div id="actionModal" class="modal-overlay">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <h3 id="modalTitle" style="margin-bottom: 0.75rem; font-size: 1.25rem;">Modal Title</h3>
+      <p id="modalBody" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">Modal message</p>
+      <div style="display: flex; justify-content: flex-end; gap: 0.5rem;">
+        <button class="btn-secondary" onclick="closeModal()">Close</button>
+        <button class="btn-primary" id="modalConfirmBtn" onclick="confirmModalAction()">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <p>&copy; 2026 Galaxy Seeder GL-12 Agricultural Equipment Platform. All rights reserved.</p>
+      <p style="margin-top: 0.4rem; font-size: 0.75rem;">Optimized for Netlify Deployment &bull; Clean Architecture &bull; Zero 404 Routing</p>
+    </div>
+  </footer>
+
+  <script>
+    // App State
+    let walletBalance = 1250.00;
+    let todayYield = 125.00;
+    let activeTab = 'home';
+    let pendingAction = null;
+
+    // Products Data matching DasaniViewModel.kt
+    const products = [
+      {
+        id: 'prod_gl12_300',
+        name: 'GL-12 Seeder (300 Plan)',
+        price: 300,
+        dailyProfit: 75,
+        durationDays: 120,
+        totalProfit: 9000,
+        img: '/assets/images/galaxy_product_gl12.jpg',
+        fallbackImg: '/assets/images/product_dasani_a.jpg',
+        desc: 'Galaxy GL-12 Manual Seeder Starter Machine (₹300 Plan • ₹75 Daily Profit)',
+        locked: false
+      },
+      {
+        id: 'prod_gl12_500',
+        name: 'GL-12 Seeder (500 Plan)',
+        price: 500,
+        dailyProfit: 125,
+        durationDays: 120,
+        totalProfit: 15000,
+        img: '/assets/images/galaxy_product_gl12.jpg',
+        fallbackImg: '/assets/images/product_dasani_b.jpg',
+        desc: 'Galaxy GL-12 Manual Seeder Standard Machine (₹500 Plan • ₹125 Daily Profit)',
+        locked: false
+      },
+      {
+        id: 'prod_gl10',
+        name: 'GL-10 Galaxy Seeder',
+        price: 1800,
+        dailyProfit: 450,
+        durationDays: 120,
+        totalProfit: 54000,
+        img: '/assets/images/galaxy_product_gl10.jpg',
+        fallbackImg: '/assets/images/product_dasani_c.jpg',
+        desc: 'Galaxy GL-10 Automatic Seed Planter & Cultivator',
+        locked: true,
+        lockMsg: '🔒 Blocked by Admin. Only ₹300 and ₹500 plans are live.'
+      },
+      {
+        id: 'prod_gl14',
+        name: 'GL-14 Multi-Crop Seeder',
+        price: 4900,
+        dailyProfit: 1350,
+        durationDays: 120,
+        totalProfit: 162000,
+        img: '/assets/images/galaxy_product_gl14.jpg',
+        fallbackImg: '/assets/images/product_dasani_vip.jpg',
+        desc: 'Multi-Crop Corn, Peanut, Soybean & Wheat Seeder Unit',
+        locked: true,
+        lockMsg: '🔒 Blocked by Admin. Only ₹300 and ₹500 plans are live.'
+      },
+      {
+        id: 'prod_vip',
+        name: 'GL-16 Heavy Seeder',
+        price: 12000,
+        dailyProfit: 3600,
+        durationDays: 120,
+        totalProfit: 432000,
+        img: '/assets/images/galaxy_product_vip.jpg',
+        fallbackImg: '/assets/images/galaxy_seeder_box.jpg',
+        desc: 'Heavy Duty Stainless Steel Agricultural Seeding Rig',
+        locked: true,
+        lockMsg: '🔒 Blocked by Admin. Only ₹300 and ₹500 plans are live.'
+      },
+      {
+        id: 'prod_tractor',
+        name: 'Galaxy Tractor Seeder',
+        price: 35000,
+        dailyProfit: 11200,
+        durationDays: 120,
+        totalProfit: 1344000,
+        img: '/assets/images/galaxy_seeder_box.jpg',
+        fallbackImg: '/assets/images/godown_warehouse_photo_1793276657898.jpg',
+        desc: 'Commercial High-Yield Tractor Attachable Seeding Machine',
+        locked: true,
+        lockMsg: '🔒 Blocked by Admin. Only ₹300 and ₹500 plans are live.'
+      },
+      {
+        id: 'prod_mega',
+        name: 'Galaxy Mega Seeder (1 Lakh)',
+        price: 100000,
+        dailyProfit: 34000,
+        durationDays: 120,
+        totalProfit: 4080000,
+        img: '/assets/images/galaxy_product_gl12.jpg',
+        fallbackImg: '/assets/images/shop_commercial_photo_1793276672572.jpg',
+        desc: 'Galaxy Industrial Farm Seeding Fleet (₹1 Lakh Investment)',
+        locked: true,
+        lockMsg: '🔒 Blocked by Admin. Only ₹300 and ₹500 plans are live.'
+      }
+    ];
+
+    // Render Product Card
+    function createProductCard(p) {
+      return `
+        <div class="product-card ${p.locked ? 'locked' : ''}">
+          <div class="product-img-wrap">
+            <img src="${p.img}" alt="${p.name}" class="product-img" onerror="this.src='${p.fallbackImg}'">
+            <span class="card-badge ${p.locked ? 'badge-locked' : 'badge-live'}">
+              ${p.locked ? '🔒 LOCKED' : '⚡ LIVE'}
+            </span>
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">${p.name}</h3>
+            <p class="product-desc">${p.desc}</p>
+            <div class="product-specs">
+              <div class="spec-item">
+                <span class="spec-label">Daily Yield</span>
+                <span class="spec-value profit">₹${p.dailyProfit.toLocaleString()}</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Total Return</span>
+                <span class="spec-value">₹${p.totalProfit.toLocaleString()}</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Validity</span>
+                <span class="spec-value">${p.durationDays} Days</span>
+              </div>
+              <div class="spec-item">
+                <span class="spec-label">Limit</span>
+                <span class="spec-value">1 Machine</span>
+              </div>
+            </div>
+            <div class="product-footer">
+              <div class="price-tag">
+                <span class="price-label">Price</span>
+                <span class="price-amt">₹${p.price.toLocaleString()}</span>
+              </div>
+              ${
+                p.locked
+                  ? `<button class="btn-secondary" style="font-size: 0.85rem;" onclick="showLockedAlert('${p.name}')">Locked</button>`
+                  : `<button class="btn-primary" onclick="buyProduct('${p.id}')">Activate Now</button>`
+              }
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Populate Grids
+    function initGrids() {
+      const featGrid = document.getElementById('featuredGrid');
+      const allGrid = document.getElementById('allProductsGrid');
+      if (featGrid) {
+        featGrid.innerHTML = products.slice(0, 3).map(createProductCard).join('');
+      }
+      if (allGrid) {
+        allGrid.innerHTML = products.map(createProductCard).join('');
+      }
+    }
+
+    // Switch Tabs
+    function switchTab(tabId) {
+      activeTab = tabId;
+      document.querySelectorAll('.tab-section').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+
+      const targetTab = document.getElementById(`tab-${tabId}`);
+      const targetBtn = document.getElementById(`tabBtn-${tabId}`);
+      if (targetTab) targetTab.classList.add('active');
+      if (targetBtn) targetBtn.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Modal Helpers
+    function showModal(title, body, confirmText = 'OK', action = null) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalBody').innerText = body;
+      document.getElementById('modalConfirmBtn').innerText = confirmText;
+      pendingAction = action;
+      document.getElementById('actionModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('actionModal').style.display = 'none';
+      pendingAction = null;
+    }
+
+    function confirmModalAction() {
+      if (typeof pendingAction === 'function') {
+        pendingAction();
+      }
+      closeModal();
+    }
+
+    // Buy Product
+    function buyProduct(prodId) {
+      const p = products.find(x => x.id === prodId);
+      if (!p) return;
+      if (walletBalance < p.price) {
+        showModal(
+          'Insufficient Balance',
+          `You need ₹${p.price.toLocaleString()} to activate this ${p.name}. Your current balance is ₹${walletBalance.toLocaleString()}. Please recharge first.`,
+          'Go to Recharge',
+          () => switchTab('recharge')
+        );
+      } else {
+        showModal(
+          'Confirm Machine Activation',
+          `Activate ${p.name} for ₹${p.price}? You will receive ₹${p.dailyProfit}/day for ${p.durationDays} days.`,
+          'Confirm Activation',
+          () => {
+            walletBalance -= p.price;
+            updateWalletUI();
+            showModal('Success!', `${p.name} activated successfully! Daily yield of ₹${p.dailyProfit} will be generated every 24 hours.`);
+          }
+        );
+      }
+    }
+
+    function showLockedAlert(name) {
+      showModal('Plan Currently Locked', `The ${name} is temporarily locked by administrator. Only the GL-12 ₹300 and ₹500 starter plans are available for immediate purchase.`);
+    }
+
+    // Claim Daily Income
+    function claimDailyIncome() {
+      walletBalance += todayYield;
+      updateWalletUI();
+      showModal('Daily Yield Claimed!', `₹${todayYield.toFixed(2)} has been credited to your wallet balance. Next yield claim opens in 24 hours.`);
+    }
+
+    // Recharge Helpers
+    function setRechargeAmt(amt) {
+      document.getElementById('rechargeInput').value = amt;
+      document.querySelectorAll('.amount-chip').forEach(c => {
+        c.classList.toggle('active', c.innerText.includes(amt.toLocaleString()));
+      });
+    }
+
+    function processRecharge() {
+      const amt = parseFloat(document.getElementById('rechargeInput').value) || 0;
+      const utr = document.getElementById('rechargeUtr').value.trim();
+      if (amt < 100) {
+        showModal('Invalid Amount', 'Minimum recharge amount is ₹100.');
+        return;
+      }
+      if (!utr || utr.length < 6) {
+        showModal('UTR Required', 'Please enter a valid 12-digit UTR reference from your payment app.');
+        return;
+      }
+      walletBalance += amt;
+      updateWalletUI();
+      document.getElementById('rechargeUtr').value = '';
+      showModal('Recharge Successful!', `₹${amt.toLocaleString()} has been verified and added to your wallet! (UTR: ${utr})`, 'OK', () => switchTab('seeders'));
+    }
+
+    // Withdrawal Helpers
+    function calculateFee() {
+      const amt = parseFloat(document.getElementById('withdrawAmt').value) || 0;
+      const fee = amt * 0.05;
+      const net = Math.max(0, amt - fee);
+      document.getElementById('feeDisplay').innerText = `₹${fee.toFixed(2)}`;
+      document.getElementById('netCreditDisplay').innerText = `₹${net.toFixed(2)}`;
+    }
+
+    function processWithdrawal() {
+      const amt = parseFloat(document.getElementById('withdrawAmt').value) || 0;
+      if (amt < 150) {
+        showModal('Invalid Amount', 'Minimum withdrawal amount is ₹150.');
+        return;
+      }
+      if (amt > walletBalance) {
+        showModal('Insufficient Funds', `You cannot withdraw ₹${amt}. Your available balance is ₹${walletBalance.toFixed(2)}.`);
+        return;
+      }
+      walletBalance -= amt;
+      updateWalletUI();
+      const fee = amt * 0.05;
+      const net = amt - fee;
+      showModal('Withdrawal Submitted', `Withdrawal of ₹${amt.toFixed(2)} (Net Credit: ₹${net.toFixed(2)}) requested. Estimated bank credit within 10-30 minutes.`);
+    }
+
+    function updateWalletUI() {
+      const formatted = `₹${walletBalance.toFixed(2)}`;
+      document.getElementById('walletBalanceDisplay').innerText = formatted;
+      const wEl = document.getElementById('withdrawableBalanceDisplay');
+      if (wEl) wEl.innerText = formatted;
+    }
+
+    function copyInviteLink() {
+      const code = document.getElementById('inviteCodeDisplay').innerText;
+      const link = `${window.location.origin}/?ref=${code}`;
+      navigator.clipboard.writeText(link).then(() => {
+        showModal('Link Copied!', `Referral link copied to clipboard:\n${link}`);
+      }).catch(() => {
+        showModal('Referral Code', `Your invite code is: ${code}`);
+      });
+    }
+
+    function openApkModal() {
+      showModal(
+        'Download Android APK',
+        'Download the official Galaxy Seeder Android APK for mobile devices. Direct download packages are available with Android 8.0+ support.',
+        'Download APK',
+        () => {
+          window.open('/assets/images/dasani_home_screenshot.jpg', '_blank');
+        }
+      );
+    }
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      initGrids();
+      calculateFee();
+
+      // Check URL query parameters for deep linking
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get('ref');
+      if (ref) {
+        const inviteEl = document.getElementById('inviteCodeDisplay');
+        if (inviteEl) inviteEl.innerText = ref;
+      }
+      const tabParam = params.get('tab');
+      if (tabParam && ['home', 'seeders', 'recharge', 'withdraw', 'team', 'support'].includes(tabParam)) {
+        switchTab(tabParam);
+      }
+    });
+  </script>
+</body>
+</html>
